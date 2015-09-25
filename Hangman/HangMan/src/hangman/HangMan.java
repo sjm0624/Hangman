@@ -7,6 +7,7 @@ package hangman;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class HangMan {
 
@@ -47,12 +48,22 @@ public class HangMan {
         System.out.printf("_ ");
         }
 
-        
-       System.out.printf("/nGuess a letter");
-       
-       
-       
-       
+       //create scanner object
+       Scanner input = new Scanner(System.in);
+       //this while loop controls the number of guesses
+       int wrongGuesses = 0;
+       while (wrongGuesses != 3)
+        //prompt 
+       System.out.printf("Guess a letter");    
+       //create a variable to hold the guessed letter
+       String guessLetter = input.nextLine();
+       //check to see if guessed letter is in the random word 
+       boolean value = randomWord.contains(guessLetter);
+       // if else statment to decide what to do
+       if (value == true){
+           System.out.println("Letter " +guessLetter+ " is correct");  
+       }
+          wrongGuesses = wrongGuesses + 1;
         System.out.println("random word = " +randomWord);
     }
     
