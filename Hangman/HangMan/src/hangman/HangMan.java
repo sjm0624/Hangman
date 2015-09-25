@@ -60,15 +60,22 @@ public class HangMan {
             // if else statment to decide what to do
             if (value == true) {
                 System.out.println("Letter " + guessLetter + " is correct");
+                
+                //find the index/position of the guessed letter
+                int index;
+                index = randomWord.indexOf(guessLetter);
+                //Take the index of the guessed letter and display it in the word
+                
                 System.out.println("Now guess a different letter");
                 //find the position of the guessed letter in the word
                 
-                char g =  randomWord.charAt(0);
+          
+                //char g =  randomWord.charAt(0);
                 //loop through all the letters of the word
-                for (int j = 0; j < randomWord.length(); j++){
-                    if (gueesLetter.eq)
-                        int comparedstring
-            }
+                //for (int j = 0; j < randomWord.length(); j++){
+                  //  if (gueesLetter.eq)
+                    //    int comparedstring
+            //}
                 
             } else {
                 System.out.println("Sorry "+guessLetter+ " is not in the word");
