@@ -48,7 +48,7 @@ public class HangMan {
         //with each guess
         int wrongGuesses = 0;
         int rightGuess = 0;
-        while (wrongGuesses != 3 || rightGuess != randomWord.length() - 1) {
+        while (wrongGuesses != 3 && rightGuess != randomWord.length()) {
             //prompt 
             System.out.printf("Guess a letter you think is in the word");
             //create a variable to hold the guessed letter
