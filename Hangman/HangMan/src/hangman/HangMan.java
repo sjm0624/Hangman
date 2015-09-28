@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package hangman;
 
 import java.util.ArrayList;
@@ -11,9 +6,6 @@ import java.util.Scanner;
 
 public class HangMan {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
 
         // user intro
@@ -42,60 +34,51 @@ public class HangMan {
         String randomWord;
         randomWord = wordBank.get(numberStored);
 
-        //display dots to show number of letters in the word
+        //creation of underscored word using string build because regular string
+        // you cant edit the string directly
+        StringBuilder underscoredWord = new StringBuilder();
         for (int j = 0; j < randomWord.length(); j++) {
-            System.out.printf("_ ");
+            underscoredWord = underscoredWord.append("_ ");
         }
-        //create scanner object
+        //display the underscores for amount of letters in the word        
+        System.out.println(underscoredWord);
+        //create scanner object to accept input from user
         Scanner input = new Scanner(System.in);
-        //this while loop controls the number of guesses
+        //this while loop controls the number of guesses and what to do
+        //with each guess
         int wrongGuesses = 0;
-        while (wrongGuesses != 3) {
+        int rightGuess = 0;
+        while (wrongGuesses != 3 || rightGuess != randomWord.length() - 1) {
             //prompt 
             System.out.printf("Guess a letter you think is in the word");
             //create a variable to hold the guessed letter
             String guessLetter = input.nextLine();
             //check to see if guessed letter is in the random word 
             boolean value = randomWord.contains(guessLetter);
-            // if else statment to decide what to do
+            // if else statment to decide what to do with guessed letter
             if (value == true) {
                 System.out.println("Letter " + guessLetter + " is correct");
-                
+
                 //find the index/position of the guessed letter
-                int index ;
+                int index;
                 index = randomWord.indexOf(guessLetter);
                 index = index * 2;
-    System.out.println(index);
+                System.out.println(index);
 
-               //creation of underscored word
-                String underscoredWord = "";  
-                for (int j = 0; j < randomWord.length(); j++){
-                    underscoredWord = underscoredWord.concat("_ ");
-                }    
-
-                //string builder to replace letteres from uderscore with correct guessed letter
-                //by using the index number
-                StringBuilder sb = new StringBuilder(underscoredWord);
                 //this line converts the guess letter to a char so i can pass it as an arugment to the string 
-                //builder find and replace method
+                //builder find and replace method using index number
                 char c = guessLetter.charAt(0);
-                sb.setCharAt(index, c);
-       System.out.println(underscoredWord);
+                underscoredWord = underscoredWord.replace(index, index + 1, guessLetter);
+                // store the new
+
+                System.out.println(underscoredWord);
                 //Take the index of the guessed letter and display it in the word
-                
+
                 System.out.println("Now guess a different letter");
-                //find the position of the guessed letter in the word
-                
-          
-                //char g =  randomWord.charAt(0);
-                //loop through all the letters of the word
-                //for (int j = 0; j < randomWord.length(); j++){
-                  //  if (gueesLetter.eq)
-                    //    int comparedstring
-            //}
-                
+                //find the position of the guessed letter in the word       
+                rightGuess = rightGuess + 1;
             } else {
-                System.out.println("Sorry "+guessLetter+ " is not in the word");
+                System.out.println("Sorry " + guessLetter + " is not in the word");
                 System.out.println("Try again");
                 wrongGuesses = wrongGuesses + 1;
             }
