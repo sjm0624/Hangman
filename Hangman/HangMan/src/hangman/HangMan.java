@@ -62,8 +62,25 @@ public class HangMan {
                 System.out.println("Letter " + guessLetter + " is correct");
                 
                 //find the index/position of the guessed letter
-                int index;
+                int index ;
                 index = randomWord.indexOf(guessLetter);
+                index = index * 2;
+    System.out.println(index);
+
+               //creation of underscored word
+                String underscoredWord = "";  
+                for (int j = 0; j < randomWord.length(); j++){
+                    underscoredWord = underscoredWord.concat("_ ");
+                }    
+
+                //string builder to replace letteres from uderscore with correct guessed letter
+                //by using the index number
+                StringBuilder sb = new StringBuilder(underscoredWord);
+                //this line converts the guess letter to a char so i can pass it as an arugment to the string 
+                //builder find and replace method
+                char c = guessLetter.charAt(0);
+                sb.setCharAt(index, c);
+       System.out.println(underscoredWord);
                 //Take the index of the guessed letter and display it in the word
                 
                 System.out.println("Now guess a different letter");
