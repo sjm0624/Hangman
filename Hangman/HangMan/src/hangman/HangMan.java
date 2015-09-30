@@ -51,7 +51,8 @@ public class HangMan {
             System.out.printf("Guess a letter you think is in the word "
                     + "");
             //create a variable to hold the guessed letter
-            String guessLetter = input.nextLine();
+            //also converts any capital letters to lowercase letters
+            String guessLetter = input.nextLine().toLowerCase();
             //check to see if guessed letter is in the random word 
             // if else statment to decide what to do with guessed letter
             if (randomWord.contains(guessLetter)) {
@@ -64,21 +65,23 @@ public class HangMan {
                 //this line converts the guess letter to a char so i can pass it as an arugment to the string 
                 //builder find and replace method using index number
                 char c = guessLetter.charAt(0);
-                underscoredWord = underscoredWord.replace(index, index++, guessLetter);
+                underscoredWord = underscoredWord.replace(index, index +1, guessLetter);
 
                 //Take the index of the guessed letter and display it in the word
                 System.out.println(underscoredWord);
                 //prompt
                 System.out.println("Now guess a different letter");
                 //counter for number of correct guesses
-                rightGuess = rightGuess++;
+                rightGuess = rightGuess +1 ;
             } else {
                 //prompt
                 System.out.println("Sorry " + guessLetter + " is not in the word");
                 System.out.println("Try again");
                 //counter for the number of incorrect guesses
-                wrongGuesses = wrongGuesses++;
+                wrongGuesses = wrongGuesses +1 ;
             }
         }
+        //prompt
+        System.out.println("Game Over");
     }
 }
