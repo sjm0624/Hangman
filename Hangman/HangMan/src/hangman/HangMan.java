@@ -57,26 +57,27 @@ public class HangMan {
             if (randomWord.contains(guessLetter)) {
                 System.out.println("Letter " + guessLetter + " is correct");
 
-                //find the index/position of the guessed letter
+                //find the index/position of the guessed letter 
                 int index = randomWord.indexOf(guessLetter);
                 index = index * 2;
 
                 //this line converts the guess letter to a char so i can pass it as an arugment to the string 
                 //builder find and replace method using index number
                 char c = guessLetter.charAt(0);
-                underscoredWord = underscoredWord.replace(index, index ++, guessLetter);
-                // store the new
+                underscoredWord = underscoredWord.replace(index, index++, guessLetter);
 
-                System.out.println(underscoredWord);
                 //Take the index of the guessed letter and display it in the word
-
+                System.out.println(underscoredWord);
+                //prompt
                 System.out.println("Now guess a different letter");
-                //find the position of the guessed letter in the word       
-                rightGuess = rightGuess ++;
+                //counter for number of correct guesses
+                rightGuess = rightGuess++;
             } else {
+                //prompt
                 System.out.println("Sorry " + guessLetter + " is not in the word");
                 System.out.println("Try again");
-                wrongGuesses = wrongGuesses ++;
+                //counter for the number of incorrect guesses
+                wrongGuesses = wrongGuesses++;
             }
         }
     }
