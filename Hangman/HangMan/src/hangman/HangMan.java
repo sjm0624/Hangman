@@ -27,12 +27,10 @@ public class HangMan {
         Random rand = new Random();
 
         //this variable holds the random number generated
-        int numberStored;
-        numberStored = rand.nextInt(5);
+        int numberStored = rand.nextInt(5);
 
         //the random number generated will link to the index of the arraylist to generate the random word
-        String randomWord;
-        randomWord = wordBank.get(numberStored);
+        String randomWord = wordBank.get(numberStored);
 
         //creation of underscored word using string build because regular string
         // you cant edit the string directly
@@ -50,25 +48,23 @@ public class HangMan {
         int rightGuess = 0;
         while (wrongGuesses != 3 && rightGuess != randomWord.length()) {
             //prompt 
-            System.out.printf("Guess a letter you think is in the word");
+            System.out.printf("Guess a letter you think is in the word "
+                    + "");
             //create a variable to hold the guessed letter
             String guessLetter = input.nextLine();
             //check to see if guessed letter is in the random word 
-            boolean value = randomWord.contains(guessLetter);
             // if else statment to decide what to do with guessed letter
-            if (value == true) {
+            if (randomWord.contains(guessLetter)) {
                 System.out.println("Letter " + guessLetter + " is correct");
 
                 //find the index/position of the guessed letter
-                int index;
-                index = randomWord.indexOf(guessLetter);
+                int index = randomWord.indexOf(guessLetter);
                 index = index * 2;
-                System.out.println(index);
 
                 //this line converts the guess letter to a char so i can pass it as an arugment to the string 
                 //builder find and replace method using index number
                 char c = guessLetter.charAt(0);
-                underscoredWord = underscoredWord.replace(index, index + 1, guessLetter);
+                underscoredWord = underscoredWord.replace(index, index ++, guessLetter);
                 // store the new
 
                 System.out.println(underscoredWord);
@@ -76,13 +72,12 @@ public class HangMan {
 
                 System.out.println("Now guess a different letter");
                 //find the position of the guessed letter in the word       
-                rightGuess = rightGuess + 1;
+                rightGuess = rightGuess ++;
             } else {
                 System.out.println("Sorry " + guessLetter + " is not in the word");
                 System.out.println("Try again");
-                wrongGuesses = wrongGuesses + 1;
+                wrongGuesses = wrongGuesses ++;
             }
-            System.out.println("random word = " + randomWord);
         }
     }
 }
